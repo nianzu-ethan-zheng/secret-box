@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block body %}
+<main class="auth">
+  <h1>secretbox</h1>
+  <form method="post" action="{{ url_for('login') }}">
+    <label>password<input type="password" name="password" autofocus></label>
+    {% if error %}<p class="err">{{ error }}</p>{% endif %}
+    <button type="submit">sign in</button>
+  </form>
+</main>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block body %}
+<header class="topbar">
+  <h1>secretbox</h1>
+  <div class="topbar-actions">
+    <button id="import-btn">import</button>
+    <form method="post" action="{{ url_for('lock') }}" class="inline">
+      <button type="submit">lock</button>
+    </form>
+    <form method="post" action="{{ url_for('logout') }}" class="inline">
+      <button type="submit">sign out</button>
+    </form>
+  </div>
+</header>
+<div class="layout">
+  <aside id="sidebar"><ul id="file-list"></ul></aside>
+  <section id="viewer">
+    <header id="viewer-title">select a file</header>
+    <pre id="viewer-body"></pre>
+  </section>
+</div>
+
+<dialog id="import-dialog">
+  <form method="post" id="import-form" enctype="multipart/form-data">
+    <h2>import file</h2>
+    <label>file<input type="file" name="file" required></label>
+    <label>gpg passphrase<input type="password" name="passphrase" required></label>
+    <p class="err" id="import-err" hidden></p>
+    <menu>
+      <button value="cancel" formmethod="dialog">cancel</button>
+      <button type="submit">add</button>
+    </menu>
+  </form>
+</dialog>
+
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+{% endblock %}

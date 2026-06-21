@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block body %}
+<main class="auth">
+  <h1>unlock vault</h1>
+  <form method="post" action="{{ url_for('unlock') }}">
+    <label>gpg passphrase<input type="password" name="passphrase" autofocus></label>
+    {% if error %}<p class="err">{{ error }}</p>{% endif %}
+    <button type="submit">unlock</button>
+  </form>
+  <form method="post" action="{{ url_for('logout') }}" class="logout-inline">
+    <button type="submit">sign out</button>
+  </form>
+</main>
+{% endblock %}
